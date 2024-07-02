@@ -11,8 +11,9 @@ delete_output = true
 black = true
 isort = true
 
-#[ranged_files.99_final]
-#range = '45-'
-#files = [
-#    'RiffMates/tests/',
-#]
+[ranged_files.2]
+range = '2-'
+files = [
+    'BookThing/templates/snippets/',
+    'BookThing/templates/lazy.html',
+]

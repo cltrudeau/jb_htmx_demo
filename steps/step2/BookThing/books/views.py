@@ -1,7 +1,8 @@
-import time #@= 2-
-from django.shortcuts import render
+import time
 
 from books.models import Book
+from django.shortcuts import render
+
 
 def home(request):
     data = {
@@ -9,7 +10,6 @@ def home(request):
     }
 
     return render(request, "home.html", data)
-#@[ 2-
 
 
 def lazy_page(request):
@@ -19,4 +19,3 @@ def lazy_page(request):
 def lazy_image(request):
     time.sleep(2)
     return render(request, "snippets/lazy_image.html")
-#@]
