@@ -8,4 +8,5 @@ urlpatterns = [
     path('', book_views.home, name="home"),
     path('lazy_page/', book_views.lazy_page, name="lazy_page"), #@= 2-
     path('lazy_image/', book_views.lazy_image, name="lazy_image"), #@= 2-
+    path('search/', book_views.search, name="search"), #@= 3-
 ]

@@ -1,0 +1,25 @@
+{% load static %}
+
+<div class="mb-4">
+  {% for book in books %}
+    <div class="row mb-4">
+      <div class="col-1">
+        <img src="{% static book.image %}" style="height: 100px; width: auto">
+      </div>
+      <div class="col">
+        {{book.title}}</i> ({{book.last_name}}, {{book.first_name}})
+      </div>
+    </div>
+  {% empty %}
+    <p class="text-muted"> No matching books </p>
+  {% endfor %}
+</div>
+
+{% if has_more %}
+<div
+    hx-get="{% url 'search' %}?page={{next_page}}&search_text={{search_text}}"
+    hx-trigger="revealed"
+    hx-swap="outerHTML">
+  <i> Loading results... </i>
+</div>
+{% endif %}

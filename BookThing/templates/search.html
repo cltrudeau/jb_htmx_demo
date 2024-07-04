@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1> Search Books </h1>
+
+{% comment %}
+<!--@[ 3 -->
+<input class="mb-4" name="text" placeholder="Search for books..."
+  type="search_text" value="{{search_text}}">
+
+<div class="mb-4">
+  {% for book in books %}
+    <div class="row mb-4">
+      <div class="col-1">
+        <img src="{% static book.image %}" style="height: 100px; width: auto">
+      </div>
+      <div class="col">
+        {{book.title}}</i> ({{book.last_name}}, {{book.first_name}})
+      </div>
+    </div>
+  {% empty %}
+    <p class="text-muted"> No matching books </p>
+  {% endfor %}
+</div>
+
+{% if has_more %}
+<a href="{% url 'search' %}?page={{next_page}}&search_text={{search_text}}"
+  class="btn btn-primary">More</a>
+{% endif %}
+<!--@] -->
+{% endcomment %}
+<!--@[ 4- -->
+<input class="mb-4" name="search_text" placeholder="Search for books..."
+  type="search_text"
+  value="{{search_text}}"
+  hx-get="{% url 'search' %}"
+  hx-trigger="keyup changed delay:500ms"
+  hx-target="#results"
+  hx-push-url="true">
+
+<div class="results" id="results">
+  {% include "snippets/search_results.html" %}
+</div>
+<!--@] -->
+
+{% endblock content %}

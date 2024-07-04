@@ -1,6 +1,5 @@
 /* === Main */
 body {
-    min-height: 75rem;
     background-color: #ccc;
 }
 
@@ -10,7 +9,7 @@ main {
     margin-bottom: 10px;
     background-color: #fff;
     box-shadow: 0 .25rem .75rem #000;
-    min-height: 94vh;
+    min-height: 99vh;
 }
 
 .self-contained {
