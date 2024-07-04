@@ -1,4 +1,11 @@
+{% extends "base.html" %}
 {% load static %}
+
+{% block content %}
+<h1> Search Books </h1>
+
+<input class="mb-4" name="text" placeholder="Search for books..."
+  type="search_text" value="{{search_text}}">
 
 <div class="mb-4">
   {% for book in books %}
@@ -16,10 +23,8 @@
 </div>
 
 {% if has_more %}
-<div
-    hx-get="{% url 'search' %}?page={{next_page}}&search_text={{search_text}}"
-    hx-trigger="revealed"
-    hx-swap="outerHTML">
-  <i> Loading results... </i>
-</div>
+<a href="{% url 'search' %}?page={{next_page}}&search_text={{search_text}}"
+  class="btn btn-primary">More</a>
 {% endif %}
+
+{% endblock content %}

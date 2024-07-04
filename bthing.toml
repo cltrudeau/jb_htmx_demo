@@ -17,3 +17,15 @@ files = [
     'BookThing/templates/snippets/',
     'BookThing/templates/lazy.html',
 ]
+
+[ranged_files.3]
+range = '3-'
+files = [
+    'BookThing/templates/search.html',
+]
+
+[ranged_files.4]
+range = '4-'
+files = [
+    'BookThing/templates/snippets/search_results.html',
+]

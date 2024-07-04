@@ -1,10 +1,11 @@
-import time #@= 2-
-import urllib #@= 3-
-from django.core.paginator import Paginator #@= 3-
-from django.db.models import Q #@= 3-
-from django.shortcuts import render
+import time
+import urllib
 
 from books.models import Book
+from django.core.paginator import Paginator
+from django.db.models import Q
+from django.shortcuts import render
+
 
 def home(request):
     data = {
@@ -12,7 +13,6 @@ def home(request):
     }
 
     return render(request, "home.html", data)
-#@[ 2-
 
 
 def lazy_page(request):
@@ -22,8 +22,8 @@ def lazy_page(request):
 def lazy_image(request):
     time.sleep(2)
     return render(request, "snippets/lazy_image.html")
-#@]
-#@[ 3-
+
+
 def search(request):
     search_text = request.GET.get("search_text", "")
     search_text = urllib.parse.unquote(search_text)
@@ -32,14 +32,18 @@ def search(request):
 
     if search_text:
         parts = search_text.split()
-        q = Q(first_name__startswith=parts[0]) | \
-            Q(last_name__startswith=parts[0]) | \
-            Q(title__startswith=parts[0])
+        q = (
+            Q(first_name__startswith=parts[0])
+            | Q(last_name__startswith=parts[0])
+            | Q(title__startswith=parts[0])
+        )
 
         for part in parts[1:]:
-            q |= Q(first_name__startswith=part) | \
-                Q(last_name__startswith=part) | \
-                Q(title__startswith=part)
+            q |= (
+                Q(first_name__startswith=part)
+                | Q(last_name__startswith=part)
+                | Q(title__startswith=part)
+            )
 
         books = Book.objects.filter(q)
         print("*** books")
@@ -62,4 +66,3 @@ def search(request):
         return render(request, "snippets/search_results.html", data)
 
     return render(request, "search.html", data)
-#@]
