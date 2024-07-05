@@ -15,6 +15,13 @@
   {% endfor %}
 </div>
 
+<!--@[ 4 -->
+{% if has_more %}
+<a href="{% url 'search' %}?page={{next_page}}&search_text={{search_text}}"
+  class="btn btn-primary">More</a>
+{% endif %}
+<!--@] -->
+<!--@[ 5- -->
 {% if has_more %}
 <div
     hx-get="{% url 'search' %}?page={{next_page}}&search_text={{search_text}}"
@@ -23,3 +30,4 @@
   <i> Loading results... </i>
 </div>
 {% endif %}
+<!--@] -->

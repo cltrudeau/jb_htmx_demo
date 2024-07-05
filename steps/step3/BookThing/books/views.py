@@ -59,10 +59,4 @@ def search(request):
         "next_page": page_num + 1,
     }
 
-    if request.htmx:
-        if page_num > 1:
-            time.sleep(2)
-
-        return render(request, "snippets/search_results.html", data)
-
     return render(request, "search.html", data)

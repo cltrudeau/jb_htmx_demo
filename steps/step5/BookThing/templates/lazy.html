@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<h1> Lazy Load </h1>
+
+<div hx-get="/lazy_image/" hx-trigger="load">
+  Loading...
+</div>
+
+{% endblock content %}
