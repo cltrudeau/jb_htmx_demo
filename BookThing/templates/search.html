@@ -5,8 +5,8 @@
 <h1> Search Books </h1>
 
 <!--@[ 3 -->
-<input class="mb-4" name="text" placeholder="Search for books..."
-  type="search_text" value="{{search_text}}">
+<input class="mb-4" name="search_text" placeholder="Search for books..."
+  type="text" value="{{search_text}}">
 
 <div class="mb-4">
   {% for book in books %}
@@ -30,7 +30,7 @@
 <!--@] -->
 <!--@[ 4- -->
 <input class="mb-4" name="search_text" placeholder="Search for books..."
-  type="search_text"
+  type="text"
   value="{{search_text}}"
   hx-get="{% url 'search' %}"
   hx-trigger="keyup changed delay:500ms"

@@ -46,7 +46,6 @@ def search(request):
             )
 
         books = Book.objects.filter(q)
-        print("*** books")
 
     paginator = Paginator(books, 2)
     page_num = int(request.GET.get("page", 1))
